@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+
+		<link rel="icon" href="./Images/listIcon.png" type="image/x-icon"/>
+
+		<!-- Monserrat font -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+			rel="stylesheet"
+		/>
+		<title>ToDo | BS</title>
+	</head>
+
+	<body>
+		<section class="top">
+
+				<div class="topImg">
+					<img src="./Images/BS_logo.png" alt="BS_logo" />
+				</div>
+
+				<form>
+					<div class="divTitle">
+						<label for="title" class="titlelbl" name="title">Title</label>
+						<input
+							type="text"
+							id="title"
+							class="input"
+							name="title"
+							placeholder="Ej: Task"
+							autocomplete="off"
+						/>
+					</div>
+					<div class="divBottom">
+						<label for="description" class="descriptionlbl" name="description">Description</label>
+						<input
+							type="text"
+							id="description"
+							class="input"
+							name="description"
+							placeholder="Ej: Learn Javascript"
+							autocomplete="off"
+						/>
+					</div>
+					<button type="button" class="addBtn">Add</button>				
+				</form>
+		</section>
+
+		<section class="bottom">
+			<div>
+				<table cellspacing="0">
+					<thead>
+						<tr>
+							<th class="titleth">Title</th>
+							<th class="descriptionth">Description</th>
+							<th class="check"></th>
+						</tr>
+					</thead>
+				</table>
+
+				<table id="table" cellspacing="0">
+					<tbody>
+						<tr id="first">
+							<th class="titleth">Title</th>
+							<th class="descriptionth">Description</th>
+							<td class="modify_td">
+								<div class="editSection">
+									<img src="./Images/edit.png" class="editBtn" alt="editBtn" role="button">
+								</div>
+								<div class="removeSection">
+									<img src="./Images/trash.png" class="removeBtn" alt="removeBtn" role="button">
+								</div>
+							</td>	
+						</tr>
+
+						<!-- Fill in JS -->
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- SweetAlert Library for my JS alerts -->
+		<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+		<script src="./script.js"></script>
+	</body>
+
+	<footer>Copyright 2021 - Britoskies</footer>
+</html>

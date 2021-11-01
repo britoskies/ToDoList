@@ -1,0 +1,223 @@
+body {
+	font-family: "Montserrat", sans-serif;
+	background-color: #f2f0f0;
+	margin: auto;
+	min-height: 100vh;
+}
+
+/* Top section */
+
+section {
+	color: white;
+}
+
+.bottom {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.top {
+	display: flex;
+	background-color: #322422;
+	padding: 10px;
+}
+
+.topImg{
+	align-self: flex-start;
+	justify-self: flex-start;
+}
+
+.topImg img {
+	width: 100px;
+}
+
+form {
+	align-items: center;
+	justify-content:space-around ;
+	display: flex;
+	width: 100%;
+}
+
+.input {
+	height: 28px;
+	border: none;
+	border-radius: 0.35em;
+	padding-left: 10px;
+}
+
+input:focus {
+	outline: none;
+}
+
+.divTitle,.divBottom{
+    gap: 100px;
+}
+
+#description {
+	width: 400px;
+}
+
+.addBtn {
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	background-color: #ad8c7b;
+	height: 30px;
+	width: 150px;
+	border: none;
+	border-radius: 1em; /* em works better on borders */
+    margin-right: 20px;
+	transition-duration: 0.3s;
+}
+
+.addBtn:hover {
+	background-color: #ad8c7bb9;
+	transform: scale(1.01);
+}
+
+
+
+
+/* Bottom section */
+
+thead {
+	background-color: #6b4633;
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+tbody {
+	color: black;
+	background-color: white;
+	justify-content: left;
+	align-items: center;
+	height: 50px;
+	width: 850px;
+	margin: auto;
+	padding-left: 30px;
+}
+
+/* Zebra striping */
+/* Not pairs (odd)*/
+#table tr:nth-child(odd) {
+	background-color: #e6e6e6;
+}
+
+table {
+	border: none;
+	margin: 100px 0 0 0;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+#table {
+	margin: 40px 0 0 0;
+}
+
+th {
+	font-weight: normal;
+}
+
+td {
+	align-items: center;
+	width: 65px;
+	height: 50px;
+	display: flex;
+	margin-right: 10px;
+	word-wrap: break-word;
+}
+
+td img {
+	padding: 5px;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+}
+
+table img:hover {
+	-webkit-transform: scale(1.2);
+	-ms-transform: scale(1.2);
+	transform: scale(1.2);
+}
+
+.check {
+	width: 75px;
+}
+
+.titleth {
+	text-align: left;
+	width: 250px;
+	height: 50px;
+	padding-left: 20px;
+}
+
+.descriptionth {
+	text-align: left;
+	width: 700px;
+	padding-left: 20px;
+}
+
+#first {
+	display: none;
+}
+
+footer {
+	text-align: center;
+	margin-top: 250px;
+	margin-bottom: 80px;
+	opacity: 40%;
+}
+
+.down {
+	color: black;
+}
+
+
+
+
+/* Responsive Design */
+@media (max-width: 600px){
+
+	/* Top section */
+
+	.top{
+		flex-direction: column;
+		display: inline-block;
+		width: 100%;
+	}
+
+	.topImg{
+		display: none;
+	}
+
+	.input{
+		margin-bottom: 10px;
+	}
+	
+	.input{
+		width: 200px;
+	}
+
+	.titlelbl{
+		margin-left: 30px;
+		margin-right: 50px;
+	}
+
+	.descriptionlbl{
+		margin-right: 21px;
+	}
+
+	#description{
+		width: 200px;
+	}
+
+	.addBtn{
+		width: 210px;
+		margin-left: 120px;
+	}
+
+	/* Bottom section */
+
+	.titleth, .descriptionth{
+		padding-left: 10px;
+	}
+}
