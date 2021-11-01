@@ -145,6 +145,7 @@ function editElement(e){
 		i++;
 	}
 	
+	// This is a modalS
 	Swal.fire({
 		title: 'Edit ToDo',
 		html:
