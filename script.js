@@ -30,8 +30,12 @@ db.forEach(element => {
     `;
 });
 
+
+
 // Add Method
+
 function addElement() {
+
 	// In case of empty inputs
 	if (title.value === "" || description.value === "") {
 		Swal.fire({
@@ -44,7 +48,7 @@ function addElement() {
 			confirmButtonColor: '#131c46',
 		  });
 		return;
-	}
+	}	
 
 	// Inserting new element
 	const newRow = table.insertRow();
@@ -82,8 +86,11 @@ function addElement() {
 	description.value = "";
 }
 
+
 // Delete Function
+
 function deleteElement(e){
+
 	Swal.fire({
 		title: 'Are you sure?',
 		text: "Think twice before doing something stupid!",
@@ -109,7 +116,7 @@ function deleteElement(e){
 			let title = e.target.parentElement.parentElement.parentElement.children[0].innerHTML;
 			let description = e.target.parentElement.parentElement.parentElement.children[1].innerHTML;	
 
-			// Get index location of title and description (same usage as filter and indexOf)
+			// Getting index location of title and description (same usage as filter and indexOf)
 			let i = 0;
 			while (true) {
 				if (db[i].Title === title && db[i].Description === description) {
@@ -131,12 +138,14 @@ function deleteElement(e){
 
 
 // Update or Edit Function
+
 function editElement(e){
+
 	// Access to actual value of title and description
 	let title = e.target.parentElement.parentElement.parentElement.children[0].innerHTML;
 	let description = e.target.parentElement.parentElement.parentElement.children[1].innerHTML;	
 
-	// Get index location of title and description (same usage as filter and indexOf)
+	// Getting index location of title and description (same usage as filter and indexOf)
 	let i = 0;
 	while (true) {
 		if (db[i].Title === title && db[i].Description === description) {
@@ -145,55 +154,74 @@ function editElement(e){
 		i++;
 	}
 	
-	// This is a modalS
 	Swal.fire({
 		title: 'Edit ToDo',
-		html:
-		  '<hr/>' +
-		  '<input id="newTitle" class="swal2-input" placeholder="Title">' +
-		  '<input id="newDescription" class="swal2-input" placeholder="Description">'+
-		  '<br/>' +
-		  '<br/>',
+		html:`
+		  <hr/>
+		  <input id="newTitle" class="swal2-input" value="${title}" placeholder="Title">
+		  <input id="newDescription" class="swal2-input" value="${description}" placeholder="Description">
+		  <br/>
+		  <br/>
+		  `,
 		  
 		focusConfirm: false,
 		showCancelButton: true,
 		cancelButtonColor: '#ba0000',
 		confirmButtonText: 'Confirm',
 		confirmButtonColor: '#131c46',
-		returnInputValueOnDeny: true,
+		returnInputValueOnDeny: false,
 		preConfirm: () => {
 			return [
-			  document.getElementById('newTitle').value,
-			  document.getElementById('newDescription').value
+				document.getElementById('newTitle').value,
+				document.getElementById('newDescription').value
 			]
-		  }
-	  }).then((result) => {
-			if (result.isConfirmed && result != null){
-				Swal.fire({
-					title: 'Content Updated',
-					icon: 'success',
-					confirmButtonText: 'Confirm',
-					confirmButtonColor: '#131c46'
-				})
-				
-				// Changing values by reference
-				e.target.parentElement.parentElement.parentElement.children[0].innerHTML =
-				result.value[0];
+		}
 
-				e.target.parentElement.parentElement.parentElement.children[1].innerHTML =
-				result.value[1]
+	}).then((result) => {
 
-				db[i].Title = result.value[0];
-				db[i].Description = result.value[1];
+		if (result.isConfirmed && result.value[0] !== "" && result.value[1] !== ""){
+			Swal.fire({
+				title: 'Content Updated',
+				icon: 'success',
+				confirmButtonText: 'Confirm',
+				confirmButtonColor: '#131c46'
+			})
+			
+			// Changing values by reference
+			e.target.parentElement.parentElement.parentElement.children[0].innerHTML =
+			result.value[0];
 
-				localStorage.setItem('dbName', JSON.stringify(db));
-			}
-	  })	
+			e.target.parentElement.parentElement.parentElement.children[1].innerHTML =
+			result.value[1];
+
+			db[i].Title = result.value[0];
+			db[i].Description = result.value[1];
+
+			localStorage.setItem('dbName', JSON.stringify(db));
+		
+		}
+	})	
 }
 
 
-// Clicks
+// Events
+
 addBtn.onclick = addElement;
+
+// Keypress events for "Enter" key
+$("#description").keypress(function(event) {
+	if (event.keyCode === 13) {
+		$(".addBtn").click();
+	}
+});
+
+$("#title").keypress(function(event) {
+	if (event.keyCode === 13) {
+		$(".addBtn").click();
+	}
+});
+
+// Events for remove and edit btn
 removeBtn = document.querySelectorAll(".removeBtn");
 removeBtn.forEach(e => {
 	e.addEventListener("click", deleteElement);
