@@ -10,3 +10,5 @@ functionalities.
 
 Open [https://britoskies.github.io/ToDoList](https://britoskies.github.io/ToDoList/)
 to view it in your browser.
+
+![ToDoList](/images/crudDesign.jpg)
